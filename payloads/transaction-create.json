@@ -1,0 +1,16 @@
+{
+  "customer_id": 123,
+  "payment_method": "pix",
+  "items": [
+    {
+      "title": "Produto Exemplo",
+      "unit_price": 10000,
+      "quantity": 1,
+      "tangible": false
+    }
+  ],
+  "webhook_url": "https://example.com/webhook",
+  "metadata": {
+    "order_id": "ORD-001"
+  }
+}

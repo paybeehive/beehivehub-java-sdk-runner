@@ -1,0 +1,17 @@
+{
+  "name": "João Silva",
+  "email": "joao.silva@example.com",
+  "document": {
+    "type": "cpf",
+    "number": "12345678909"
+  },
+  "phone": "+5511999999999",
+  "address": {
+    "street": "Rua das Flores, 123",
+    "neighborhood": "Centro",
+    "zip_code": "01001-000",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "BR"
+  }
+}

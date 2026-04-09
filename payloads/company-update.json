@@ -1,0 +1,9 @@
+{
+  "invoice_descriptor": "MINHA EMPRESA",
+  "average_revenue": 1000000,
+  "average_ticket": 10000,
+  "product_info": "Produtos digitais e físicos",
+  "website": "https://exemplo.com.br",
+  "email": "contato@exemplo.com.br",
+  "phone": "+5511999999999"
+}

@@ -1,0 +1,10 @@
+{
+  "bank_code": "341",
+  "agency": "0001",
+  "account": "98765-4",
+  "type": "checking",
+  "document": {
+    "type": "cnpj",
+    "number": "11222333000181"
+  }
+}

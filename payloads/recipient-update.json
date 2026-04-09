@@ -1,0 +1,7 @@
+{
+  "legal_name": "Empresa Exemplo Atualizada Ltda",
+  "transfer_settings": {
+    "transfer_enabled": true,
+    "transfer_interval": "daily"
+  }
+}

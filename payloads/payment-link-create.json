@@ -1,0 +1,8 @@
+{
+  "amount": 10000,
+  "payment_methods": ["pix", "credit_card"],
+  "expires_at": "2026-12-31T23:59:59Z",
+  "collect_address": false,
+  "collect_document": true,
+  "max_installments": 12
+}

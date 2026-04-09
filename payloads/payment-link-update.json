@@ -1,0 +1,7 @@
+{
+  "amount": 15000,
+  "payment_methods": ["pix"],
+  "collect_address": true,
+  "collect_document": true,
+  "max_installments": 1
+}
