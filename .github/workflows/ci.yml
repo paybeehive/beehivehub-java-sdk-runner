@@ -13,20 +13,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
-          node-version: '22'
-          cache: 'npm'
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
 
-      - name: Install dependencies
-        run: 'npm ci'
+      - name: Checkout SDK
+        uses: actions/checkout@v4
+        with:
+          repository: paybeehive/beehivehub-java-sdk
+          token: ${{ secrets.GH_PAT }}
+          path: beehivehub-java-sdk
 
-      - name: Run lint
-        run: npm run lint
+      - name: Install SDK
+        run: mvn install -DskipTests -f beehivehub-java-sdk/pom.xml
 
-      - name: Run tests
-        run: npm test
-
-      - name: Run build
-        run: npm run build
+      - name: Build and test
+        run: mvn verify
