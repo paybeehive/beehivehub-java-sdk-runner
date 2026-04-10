@@ -31,4 +31,4 @@ mvn exec:java
 
 - Use `BEEHIVE_ENVIRONMENT=sandbox` in `.env` to test without real money
 - Edit files in `payloads/` before running create/update operations
-- All amounts are in cents: R$ 100,00 = `10000`
+- All amounts are in cents: R$ 100.00 = `10000`

@@ -28,7 +28,9 @@ Edit `.env` and set your credentials:
 
 ```
 BEEHIVE_SECRET_KEY=your_secret_key_here
-BEEHIVE_ENVIRONMENT=production  # or sandbox
+
+# Optional: uncomment to use sandbox instead of production
+# BEEHIVE_ENVIRONMENT=sandbox
 ```
 
 ### 3. Run
@@ -51,18 +53,21 @@ java -jar target/beehivehub-java-sdk-runner-1.0.0.jar
 The runner provides an interactive menu:
 
 ```
-=== BeehiveHub Java SDK Runner ===
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🐝 Beehive Hub SDK Runner
+🌐 Environment: PRODUCTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Select a resource:
-  1. Transactions
-  2. Customers
-  3. Payment Links
-  4. Recipients
-  5. Bank Accounts
-  6. Transfers
-  7. Company
-  8. Balance
-  0. Exit
+Escolha um recurso:
+  1. 💳 Transactions
+  2. 👥 Customers
+  3. 🔗 Payment Links
+  4. 🎯 Recipients
+  5. 🏦 Bank Accounts
+  6. 💸 Transfers
+  7. 🏢 Company
+  8. 📊 Balance
+  0. ❌ Exit
 ```
 
 Select a resource, then choose an operation. Responses are saved to the `output/` directory as timestamped JSON files.
@@ -71,7 +76,7 @@ Select a resource, then choose an operation. Responses are saved to the `output/
 
 Edit the files in `payloads/` to customize the data sent to the API. See [payloads/README.md](payloads/README.md) for details.
 
-> All monetary values are in **cents** (e.g., R$ 100,00 = `10000`).
+> All monetary values are in **cents** (e.g., R$ 100.00 = `10000`).
 
 ## Environments
 

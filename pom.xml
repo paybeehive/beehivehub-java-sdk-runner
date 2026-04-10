@@ -103,6 +103,10 @@
                 <version>3.1.0</version>
                 <configuration>
                     <mainClass>${main.class}</mainClass>
+                    <jvmArgs>
+                        <jvmArg>-Dfile.encoding=UTF-8</jvmArg>
+                        <jvmArg>-Dstdout.encoding=UTF-8</jvmArg>
+                    </jvmArgs>
                 </configuration>
             </plugin>
             <plugin>
