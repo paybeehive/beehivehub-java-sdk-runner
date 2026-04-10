@@ -14,14 +14,16 @@ public class TransactionsMenu {
 
     private final BeehiveHubClient beehive;
     private final Scanner scanner;
+    private final String environment;
 
-    public TransactionsMenu(BeehiveHubClient beehive, Scanner scanner) {
+    public TransactionsMenu(BeehiveHubClient beehive, Scanner scanner, String environment) {
         this.beehive = beehive;
         this.scanner = scanner;
+        this.environment = environment;
     }
 
     public void run() {
-        System.out.println("=== Transactions ===");
+        System.out.println("💳 Transactions");
         System.out.println("  1. List transactions");
         System.out.println("  2. Get transaction by ID");
         System.out.println("  3. Create transaction");
@@ -37,27 +39,24 @@ public class TransactionsMenu {
             switch (choice) {
                 case "1" -> {
                     List<Transaction> result = beehive.transactions.list(new ListTransactionsParams());
-                    Utils.saveOutput("transactions-list", result);
-                    System.out.println("  Found " + result.size() + " transaction(s)");
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transactions-list", result,
+                            new Utils.SdkInfo("transactions", "list", environment));
+                    Utils.printSuccess("Listed " + result.size() + " transaction(s)");
                 }
                 case "2" -> {
                     System.out.print("  Transaction ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     Transaction result = beehive.transactions.get(id);
-                    Utils.saveOutput("transaction-get", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Status: " + result.getStatus());
-                    System.out.println("  Amount: " + Utils.formatCurrency(result.getAmount()));
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transaction-get", result,
+                            new Utils.SdkInfo("transactions", "get", environment));
+                    Utils.printSuccess("Transaction #" + result.getId() + " — " + result.getStatus());
                 }
                 case "3" -> {
                     CreateTransactionRequest payload = Utils.loadPayload("transaction-create.json", CreateTransactionRequest.class);
                     Transaction result = beehive.transactions.create(payload);
-                    Utils.saveOutput("transaction-create", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Status: " + result.getStatus());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transaction-create", result,
+                            new Utils.SdkInfo("transactions", "create", environment));
+                    Utils.printSuccess("Transaction created: #" + result.getId() + " — " + result.getStatus());
                 }
                 case "4" -> {
                     System.out.print("  Transaction ID: ");
@@ -66,23 +65,24 @@ public class TransactionsMenu {
                     String amountStr = scanner.nextLine().trim();
                     Long amount = amountStr.isBlank() ? null : Long.parseLong(amountStr);
                     Transaction result = beehive.transactions.refund(id, amount);
-                    Utils.saveOutput("transaction-refund", result);
-                    System.out.println("  Status: " + result.getStatus());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transaction-refund", result,
+                            new Utils.SdkInfo("transactions", "refund", environment));
+                    Utils.printSuccess("Transaction #" + id + " refunded — " + result.getStatus());
                 }
                 case "5" -> {
                     System.out.print("  Transaction ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     UpdateDeliveryStatusRequest payload = Utils.loadPayload("delivery-update.json", UpdateDeliveryStatusRequest.class);
                     Transaction result = beehive.transactions.updateDelivery(id, payload);
-                    Utils.saveOutput("transaction-delivery-update", result);
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transaction-delivery-update", result,
+                            new Utils.SdkInfo("transactions", "updateDelivery", environment));
+                    Utils.printSuccess("Delivery status updated for transaction #" + id);
                 }
                 case "0" -> {}
-                default -> System.out.println("  Invalid option.");
+                default -> Utils.printError("Invalid option.");
             }
         } catch (Exception e) {
-            Utils.printError(e);
+            Utils.printError(e.getMessage());
         }
     }
 }

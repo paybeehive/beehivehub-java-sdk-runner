@@ -11,14 +11,16 @@ public class TransfersMenu {
 
     private final BeehiveHubClient beehive;
     private final Scanner scanner;
+    private final String environment;
 
-    public TransfersMenu(BeehiveHubClient beehive, Scanner scanner) {
+    public TransfersMenu(BeehiveHubClient beehive, Scanner scanner, String environment) {
         this.beehive = beehive;
         this.scanner = scanner;
+        this.environment = environment;
     }
 
     public void run() {
-        System.out.println("=== Transfers ===");
+        System.out.println("💸 Transfers");
         System.out.println("  1. Get transfer by ID");
         System.out.println("  2. Create transfer");
         System.out.println("  3. Create transfer with bank account");
@@ -34,33 +36,30 @@ public class TransfersMenu {
                     System.out.print("  Transfer ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     Transfer result = beehive.transfers.get(id);
-                    Utils.saveOutput("transfer-get", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Status: " + result.getStatus());
-                    System.out.println("  Amount: " + Utils.formatCurrency(result.getAmount()));
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transfer-get", result,
+                            new Utils.SdkInfo("transfers", "get", environment));
+                    Utils.printSuccess("Transfer #" + result.getId() + " — " + result.getStatus()
+                            + " — " + Utils.formatCurrency(result.getAmount()));
                 }
                 case "2" -> {
                     CreateTransferRequest payload = Utils.loadPayload("transfer-create.json", CreateTransferRequest.class);
                     Transfer result = beehive.transfers.create(payload);
-                    Utils.saveOutput("transfer-create", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Status: " + result.getStatus());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transfer-create", result,
+                            new Utils.SdkInfo("transfers", "create", environment));
+                    Utils.printSuccess("Transfer created: #" + result.getId() + " — " + result.getStatus());
                 }
                 case "3" -> {
                     CreateTransferRequest payload = Utils.loadPayload("transfer-create-with-account.json", CreateTransferRequest.class);
                     Transfer result = beehive.transfers.create(payload);
-                    Utils.saveOutput("transfer-create-with-account", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Status: " + result.getStatus());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("transfer-create-with-account", result,
+                            new Utils.SdkInfo("transfers", "create", environment));
+                    Utils.printSuccess("Transfer created: #" + result.getId() + " — " + result.getStatus());
                 }
                 case "0" -> {}
-                default -> System.out.println("  Invalid option.");
+                default -> Utils.printError("Invalid option.");
             }
         } catch (Exception e) {
-            Utils.printError(e);
+            Utils.printError(e.getMessage());
         }
     }
 }

@@ -13,14 +13,16 @@ public class PaymentLinksMenu {
 
     private final BeehiveHubClient beehive;
     private final Scanner scanner;
+    private final String environment;
 
-    public PaymentLinksMenu(BeehiveHubClient beehive, Scanner scanner) {
+    public PaymentLinksMenu(BeehiveHubClient beehive, Scanner scanner, String environment) {
         this.beehive = beehive;
         this.scanner = scanner;
+        this.environment = environment;
     }
 
     public void run() {
-        System.out.println("=== Payment Links ===");
+        System.out.println("🔗 Payment Links");
         System.out.println("  1. List payment links");
         System.out.println("  2. Get payment link by ID");
         System.out.println("  3. Create payment link");
@@ -36,50 +38,45 @@ public class PaymentLinksMenu {
             switch (choice) {
                 case "1" -> {
                     List<PaymentLink> result = beehive.paymentLinks.list();
-                    Utils.saveOutput("payment-links-list", result);
-                    System.out.println("  Found " + result.size() + " payment link(s)");
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("payment-links-list", result,
+                            new Utils.SdkInfo("paymentLinks", "list", environment));
+                    Utils.printSuccess("Listed " + result.size() + " payment link(s)");
                 }
                 case "2" -> {
                     System.out.print("  Payment Link ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     PaymentLink result = beehive.paymentLinks.get(id);
-                    Utils.saveOutput("payment-link-get", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Alias: " + result.getAlias());
-                    System.out.println("  URL: " + result.getUrl());
-                    System.out.println("  Amount: " + Utils.formatCurrency(result.getAmount()));
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("payment-link-get", result,
+                            new Utils.SdkInfo("paymentLinks", "get", environment));
+                    Utils.printSuccess("Payment Link #" + result.getId() + " — " + result.getUrl());
                 }
                 case "3" -> {
                     CreatePaymentLinkRequest payload = Utils.loadPayload("payment-link-create.json", CreatePaymentLinkRequest.class);
                     PaymentLink result = beehive.paymentLinks.create(payload);
-                    Utils.saveOutput("payment-link-create", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  URL: " + result.getUrl());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("payment-link-create", result,
+                            new Utils.SdkInfo("paymentLinks", "create", environment));
+                    Utils.printSuccess("Payment Link created: " + result.getUrl());
                 }
                 case "4" -> {
                     System.out.print("  Payment Link ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     UpdatePaymentLinkRequest payload = Utils.loadPayload("payment-link-update.json", UpdatePaymentLinkRequest.class);
                     PaymentLink result = beehive.paymentLinks.update(id, payload);
-                    Utils.saveOutput("payment-link-update", result);
-                    System.out.println("  ID: " + result.getId());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("payment-link-update", result,
+                            new Utils.SdkInfo("paymentLinks", "update", environment));
+                    Utils.printSuccess("Payment Link #" + id + " updated");
                 }
                 case "5" -> {
                     System.out.print("  Payment Link ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     beehive.paymentLinks.delete(id);
-                    System.out.println("  Payment link " + id + " deleted.");
-                    Utils.printSuccess();
+                    Utils.printSuccess("Payment Link #" + id + " deleted");
                 }
                 case "0" -> {}
-                default -> System.out.println("  Invalid option.");
+                default -> Utils.printError("Invalid option.");
             }
         } catch (Exception e) {
-            Utils.printError(e);
+            Utils.printError(e.getMessage());
         }
     }
 }

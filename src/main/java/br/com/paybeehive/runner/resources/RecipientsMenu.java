@@ -13,14 +13,16 @@ public class RecipientsMenu {
 
     private final BeehiveHubClient beehive;
     private final Scanner scanner;
+    private final String environment;
 
-    public RecipientsMenu(BeehiveHubClient beehive, Scanner scanner) {
+    public RecipientsMenu(BeehiveHubClient beehive, Scanner scanner, String environment) {
         this.beehive = beehive;
         this.scanner = scanner;
+        this.environment = environment;
     }
 
     public void run() {
-        System.out.println("=== Recipients ===");
+        System.out.println("🎯 Recipients");
         System.out.println("  1. List recipients");
         System.out.println("  2. Get recipient by ID");
         System.out.println("  3. Create recipient");
@@ -35,42 +37,39 @@ public class RecipientsMenu {
             switch (choice) {
                 case "1" -> {
                     List<Recipient> result = beehive.recipients.list();
-                    Utils.saveOutput("recipients-list", result);
-                    System.out.println("  Found " + result.size() + " recipient(s)");
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("recipients-list", result,
+                            new Utils.SdkInfo("recipients", "list", environment));
+                    Utils.printSuccess("Listed " + result.size() + " recipient(s)");
                 }
                 case "2" -> {
                     System.out.print("  Recipient ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     Recipient result = beehive.recipients.get(id);
-                    Utils.saveOutput("recipient-get", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Legal Name: " + result.getLegalName());
-                    System.out.println("  Status: " + result.getStatus());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("recipient-get", result,
+                            new Utils.SdkInfo("recipients", "get", environment));
+                    Utils.printSuccess("Recipient #" + result.getId() + " — " + result.getLegalName());
                 }
                 case "3" -> {
                     CreateRecipientRequest payload = Utils.loadPayload("recipient-create.json", CreateRecipientRequest.class);
                     Recipient result = beehive.recipients.create(payload);
-                    Utils.saveOutput("recipient-create", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Legal Name: " + result.getLegalName());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("recipient-create", result,
+                            new Utils.SdkInfo("recipients", "create", environment));
+                    Utils.printSuccess("Recipient created: #" + result.getId() + " — " + result.getLegalName());
                 }
                 case "4" -> {
                     System.out.print("  Recipient ID: ");
                     Long id = Long.parseLong(scanner.nextLine().trim());
                     UpdateRecipientRequest payload = Utils.loadPayload("recipient-update.json", UpdateRecipientRequest.class);
                     Recipient result = beehive.recipients.update(id, payload);
-                    Utils.saveOutput("recipient-update", result);
-                    System.out.println("  ID: " + result.getId());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("recipient-update", result,
+                            new Utils.SdkInfo("recipients", "update", environment));
+                    Utils.printSuccess("Recipient #" + id + " updated");
                 }
                 case "0" -> {}
-                default -> System.out.println("  Invalid option.");
+                default -> Utils.printError("Invalid option.");
             }
         } catch (Exception e) {
-            Utils.printError(e);
+            Utils.printError(e.getMessage());
         }
     }
 }

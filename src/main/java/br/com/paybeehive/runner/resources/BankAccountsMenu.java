@@ -12,14 +12,16 @@ public class BankAccountsMenu {
 
     private final BeehiveHubClient beehive;
     private final Scanner scanner;
+    private final String environment;
 
-    public BankAccountsMenu(BeehiveHubClient beehive, Scanner scanner) {
+    public BankAccountsMenu(BeehiveHubClient beehive, Scanner scanner, String environment) {
         this.beehive = beehive;
         this.scanner = scanner;
+        this.environment = environment;
     }
 
     public void run() {
-        System.out.println("=== Bank Accounts ===");
+        System.out.println("🏦 Bank Accounts");
         System.out.println("  1. List bank accounts");
         System.out.println("  2. Create bank account");
         System.out.println("  0. Back");
@@ -34,25 +36,24 @@ public class BankAccountsMenu {
                     System.out.print("  Recipient ID: ");
                     Long recipientId = Long.parseLong(scanner.nextLine().trim());
                     List<BankAccount> result = beehive.bankAccounts.list(recipientId);
-                    Utils.saveOutput("bank-accounts-list", result);
-                    System.out.println("  Found " + result.size() + " bank account(s)");
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("bank-accounts-list", result,
+                            new Utils.SdkInfo("bankAccounts", "list", environment));
+                    Utils.printSuccess("Listed " + result.size() + " bank account(s)");
                 }
                 case "2" -> {
                     System.out.print("  Recipient ID: ");
                     Long recipientId = Long.parseLong(scanner.nextLine().trim());
                     CreateBankAccountRequest payload = Utils.loadPayload("bank-account-create.json", CreateBankAccountRequest.class);
                     BankAccount result = beehive.bankAccounts.create(recipientId, payload);
-                    Utils.saveOutput("bank-account-create", result);
-                    System.out.println("  ID: " + result.getId());
-                    System.out.println("  Bank: " + result.getBankCode());
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("bank-account-create", result,
+                            new Utils.SdkInfo("bankAccounts", "create", environment));
+                    Utils.printSuccess("Bank account created: #" + result.getId() + " — bank " + result.getBankCode());
                 }
                 case "0" -> {}
-                default -> System.out.println("  Invalid option.");
+                default -> Utils.printError("Invalid option.");
             }
         } catch (Exception e) {
-            Utils.printError(e);
+            Utils.printError(e.getMessage());
         }
     }
 }

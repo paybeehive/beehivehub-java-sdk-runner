@@ -10,14 +10,16 @@ public class BalanceMenu {
 
     private final BeehiveHubClient beehive;
     private final Scanner scanner;
+    private final String environment;
 
-    public BalanceMenu(BeehiveHubClient beehive, Scanner scanner) {
+    public BalanceMenu(BeehiveHubClient beehive, Scanner scanner, String environment) {
         this.beehive = beehive;
         this.scanner = scanner;
+        this.environment = environment;
     }
 
     public void run() {
-        System.out.println("=== Balance ===");
+        System.out.println("📊 Balance");
         System.out.println("  1. Get available balance");
         System.out.println("  0. Back");
         System.out.print("\nChoice: ");
@@ -29,15 +31,15 @@ public class BalanceMenu {
             switch (choice) {
                 case "1" -> {
                     Balance result = beehive.balance.get();
-                    Utils.saveOutput("balance-get", result);
-                    System.out.println("  Available: " + Utils.formatCurrency(result.getAmount()));
-                    Utils.printSuccess();
+                    Utils.printResultWithFile("balance-get", result,
+                            new Utils.SdkInfo("balance", "get", environment));
+                    Utils.printSuccess("Available balance: " + Utils.formatCurrency(result.getAmount()));
                 }
                 case "0" -> {}
-                default -> System.out.println("  Invalid option.");
+                default -> Utils.printError("Invalid option.");
             }
         } catch (Exception e) {
-            Utils.printError(e);
+            Utils.printError(e.getMessage());
         }
     }
 }
