@@ -44,6 +44,8 @@ mvn package
 java -jar target/beehivehub-java-sdk-runner-1.0.0.jar
 ```
 
+> When running the JAR directly, make sure to execute the command from the project root so the `payloads/` directory is accessible.
+
 ## Usage
 
 The runner provides an interactive menu:
