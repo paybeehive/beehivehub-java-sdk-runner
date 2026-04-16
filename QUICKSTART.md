@@ -1,34 +1,99 @@
-# Quickstart
+# 🚀 Quick Start Guide
 
-## 1. Install the SDK in your local Maven repo
+## Setup em 2 passos
 
-```bash
-cd ../beehivehub-java-sdk
-mvn install -DskipTests
+### 1️⃣ Configurar .env
+
+Crie o arquivo `.env` na raiz:
+
+```env
+BEEHIVE_SECRET_KEY=sk_test_abc123xyz...
 ```
 
-## 2. Configure environment
-
-```bash
-cd ../beehivehub-java-sdk-runner
-cp .env.example .env
-# Edit .env and set BEEHIVE_SECRET_KEY
-```
-
-## 3. Run
+### 2️⃣ Executar
 
 ```bash
 mvn exec:java
 ```
 
-## 4. Try your first operation
+## 💡 Primeiro Uso
 
-1. Select `8` → Balance
-2. Select `1` → Get available balance
-3. Check the `output/` folder for the JSON response
+### Exemplo: Consultar Saldo
 
-## Tips
+1. Execute `mvn exec:java`
+2. Escolha "📊 Balance"
+3. Veja o saldo disponível
 
-- Use `BEEHIVE_ENVIRONMENT=sandbox` in `.env` to test without real money
-- Edit files in `payloads/` before running create/update operations
-- All amounts are in cents: R$ 100.00 = `10000`
+### Exemplo: Listar Clientes
+
+1. Execute `mvn exec:java`
+2. Escolha "👥 Customers"
+3. Escolha "List Customers"
+4. Digite o email para buscar (ex: `cliente@example.com`)
+
+### Exemplo: Criar Cliente
+
+1. Edite `payloads/customer-create.json`:
+
+```json
+{
+  "name": "Seu Nome",
+  "email": "seuemail@example.com",
+  "documents": [{ "type": "cpf", "number": "12345678900" }],
+  "phone_numbers": ["+5511999999999"]
+}
+```
+
+1. Execute `mvn exec:java`
+2. Escolha "👥 Customers"
+3. Escolha "Create Customer"
+4. Copie o ID retornado
+
+## 🎯 Testar Diferentes Cenários
+
+### Variação 1: Mudar valores
+
+Edite `payloads/transaction-create.json`:
+
+- Mude `amount` de `10000` para `50000`
+- Execute e veja a diferença
+
+### Variação 2: Usar exemplos prontos
+
+Copie um exemplo para o payload principal:
+
+```bash
+cp payloads/examples/transaction-pix.json payloads/transaction-create.json
+```
+
+Execute "Create Transaction" e terá uma transação PIX.
+
+### Variação 3: Criar Payment Link
+
+Edite `payloads/payment-link-create.json` com os dados desejados e execute "Create Payment Link" no menu.
+
+## 🔄 Workflow Recomendado
+
+### Para validar CRUD completo
+
+1. **Create** - Crie um recurso e copie o ID
+2. **Get** - Busque pelo ID para confirmar
+3. **List** - Liste para ver na coleção
+4. **Update** (se disponível) - Modifique e confirme
+5. **Delete** (se disponível) - Remova se necessário
+
+## ⚠️ Dicas
+
+- **Ctrl+C** sai do CLI a qualquer momento
+- **IDs copiados** podem ser colados diretamente
+- **Erros da API** são mostrados formatados
+- **Payloads inválidos** mostram o erro específico
+- Use `BEEHIVE_ENVIRONMENT=sandbox` no `.env` para testar sem dinheiro real
+
+## 📚 Documentação Completa
+
+Veja o [README.md](README.md) principal para mais detalhes.
+
+---
+
+💡 **Pronto para começar? Execute `mvn exec:java`!**

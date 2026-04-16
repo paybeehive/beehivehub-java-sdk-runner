@@ -1,10 +1,21 @@
-.env
-output/
+# Maven build output
 target/
-*.class
-*.jar
-.DS_Store
-Thumbs.db
+
+# Variáveis de ambiente e chaves (segurança)
+.env
+
+# IntelliJ IDEA
 .idea/
 *.iml
+
+# VS Code
 .vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Respostas salvas pelo runner
+output/

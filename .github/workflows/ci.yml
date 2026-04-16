@@ -20,14 +20,11 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Checkout SDK
-        uses: actions/checkout@v4
-        with:
-          repository: paybeehive/beehivehub-java-sdk
-          path: beehivehub-java-sdk
+      - name: Install dependencies
+        run: mvn dependency:resolve -q
 
-      - name: Install SDK
-        run: mvn install -DskipTests -f beehivehub-java-sdk/pom.xml
+      - name: Run tests
+        run: mvn test
 
-      - name: Build and test
-        run: mvn verify
+      - name: Run build
+        run: mvn verify -DskipTests
