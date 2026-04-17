@@ -2,13 +2,25 @@
   "amount": 10000,
   "paymentMethod": "pix",
   "customer": {
-    "name": "Joao Silva",
-    "email": "joao.teste@example.com",
+    "name": "João Silva",
+    "email": "joao.test@example.com",
     "document": {
       "type": "cpf",
       "number": "00000000191"
     },
     "phone": "11999999999"
+  },
+  "shipping": {
+    "fee": 1000,
+    "address": {
+      "street": "Rua Exemplo",
+      "streetNumber": "123",
+      "neighborhood": "Centro",
+      "zipCode": "01234567",
+      "city": "São Paulo",
+      "state": "SP",
+      "country": "br"
+    }
   },
   "items": [
     {

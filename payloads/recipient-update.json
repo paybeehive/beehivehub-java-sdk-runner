@@ -1,7 +1,3 @@
 {
-  "legalName": "Empresa Exemplo Atualizada Ltda",
-  "transferSettings": {
-    "transferEnabled": true,
-    "transferInterval": "daily"
-  }
+  "legalName": "Beehive Sandbox"
 }

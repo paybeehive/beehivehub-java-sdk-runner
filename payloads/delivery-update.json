@@ -1,5 +1,4 @@
 {
-  "status": "delivered",
-  "trackingCode": "BR123456789BR",
-  "carrier": "Correios"
+  "status": "in_transit",
+  "trackingCode": "BR123456789"
 }
