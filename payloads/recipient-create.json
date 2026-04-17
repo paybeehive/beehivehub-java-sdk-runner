@@ -1,22 +1,22 @@
 {
-  "legal_name": "Empresa Exemplo Ltda",
+  "legalName": "Recebedor Exemplo Ltda",
   "document": {
     "type": "cnpj",
     "number": "11222333000181"
   },
-  "transfer_settings": {
-    "transfer_enabled": true,
-    "transfer_interval": "weekly",
-    "transfer_day": 5
+  "transferSettings": {
+    "transferEnabled": true,
+    "automaticAnticipationEnabled": false,
+    "anticipatableVolumePercentage": 100
   },
-  "bank_account": {
-    "bank_code": "341",
-    "agency": "0001",
-    "account": "12345-6",
-    "type": "checking",
-    "document": {
-      "type": "cnpj",
-      "number": "11222333000181"
-    }
+  "bankAccount": {
+    "bankCode": "341",
+    "agencyNumber": "0001",
+    "accountNumber": "12345",
+    "accountDigit": "6",
+    "type": "conta_corrente",
+    "legalName": "Recebedor Exemplo Ltda",
+    "documentNumber": "11222333000181",
+    "documentType": "cnpj"
   }
 }

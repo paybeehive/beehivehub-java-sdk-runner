@@ -1,17 +1,19 @@
 {
-  "name": "João Silva",
-  "email": "joao.silva@example.com",
-  "document": {
-    "type": "cpf",
-    "number": "12345678909"
-  },
-  "phone": "+5511999999999",
+  "name": "Maria Silva",
+  "email": "maria3@example.com",
+  "phone": "11988888888",
   "address": {
-    "street": "Rua das Flores, 123",
-    "neighborhood": "Centro",
-    "zip_code": "01001-000",
-    "city": "São Paulo",
+    "street": "Av. Paulista",
+    "streetNumber": "1578",
+    "complement": "Apto 101",
+    "neighborhood": "Bela Vista",
+    "zipCode": "01310100",
+    "city": "Sao Paulo",
     "state": "SP",
-    "country": "BR"
+    "country": "br"
+  },
+  "document": {
+    "number": "98765432100",
+    "type": "cpf"
   }
 }

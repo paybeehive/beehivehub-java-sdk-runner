@@ -20,7 +20,7 @@ public class TransfersMenu {
     }
 
     public void run() {
-        System.out.println("💸 Transfers");
+        System.out.println("Transfers");
         System.out.println("  1. Get transfer by ID");
         System.out.println("  2. Create transfer");
         System.out.println("  3. Create transfer with bank account");

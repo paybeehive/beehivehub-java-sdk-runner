@@ -20,7 +20,7 @@ public class CompanyMenu {
     }
 
     public void run() {
-        System.out.println("🏢 Company");
+        System.out.println("Company");
         System.out.println("  1. Get company");
         System.out.println("  2. Update company");
         System.out.println("  0. Back");

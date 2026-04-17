@@ -1,16 +1,25 @@
 {
-  "customer_id": 123,
-  "payment_method": "pix",
+  "amount": 10000,
+  "paymentMethod": "pix",
+  "customer": {
+    "name": "Joao Silva",
+    "email": "joao.teste@example.com",
+    "document": {
+      "type": "cpf",
+      "number": "00000000191"
+    },
+    "phone": "11999999999"
+  },
   "items": [
     {
-      "title": "Produto Exemplo",
-      "unit_price": 10000,
+      "title": "Produto Teste",
+      "unitPrice": 10000,
       "quantity": 1,
-      "tangible": false
+      "tangible": true
     }
   ],
-  "webhook_url": "https://example.com/webhook",
+  "postbackUrl": "https://example.com/webhook",
   "metadata": {
-    "order_id": "ORD-001"
+    "orderId": "1234567890"
   }
 }

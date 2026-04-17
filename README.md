@@ -34,10 +34,18 @@ Or build a fat JAR and run:
 
 ```bash
 mvn package
-java -jar target/beehivehub-java-sdk-runner-1.0.0.jar
+java -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -jar target/beehivehub-java-sdk-runner-1.0.0.jar
 ```
 
 > When running the JAR directly, make sure to execute the command from the project root so the `payloads/` directory is accessible.
+
+### Windows — caracteres especiais
+
+No CMD ou PowerShell, execute antes de rodar para evitar caracteres quebrados:
+
+```bash
+chcp 65001
+```
 
 ## Usage
 

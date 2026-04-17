@@ -35,29 +35,29 @@ public class Cli {
                 case "7" -> new CompanyMenu(beehive, scanner, environment).run();
                 case "8" -> new BalanceMenu(beehive, scanner, environment).run();
                 case "0" -> {
-                    System.out.println("\n👋 Até logo!\n");
+                    System.out.println("\nAte logo!\n");
                     return;
                 }
-                default -> System.out.println("\n❌ Opção inválida. Tente novamente.");
+                default -> System.out.println("\nOpcao invalida. Tente novamente.");
             }
         }
     }
 
     private void printMainMenu() {
-        System.out.println("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-        System.out.println("🐝 Beehive Hub SDK Runner");
-        System.out.println("🌐 Environment: " + environment.toUpperCase());
-        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+        System.out.println("\n----------------------------------------");
+        System.out.println("Beehive Hub SDK Runner");
+        System.out.println("Environment: " + environment.toUpperCase());
+        System.out.println("----------------------------------------\n");
         System.out.println("Escolha um recurso:");
-        System.out.println("  1. 💳 Transactions");
-        System.out.println("  2. 👥 Customers");
-        System.out.println("  3. 🔗 Payment Links");
-        System.out.println("  4. 🎯 Recipients");
-        System.out.println("  5. 🏦 Bank Accounts");
-        System.out.println("  6. 💸 Transfers");
-        System.out.println("  7. 🏢 Company");
-        System.out.println("  8. 📊 Balance");
-        System.out.println("  0. ❌ Exit");
+        System.out.println("  1. Transactions");
+        System.out.println("  2. Customers");
+        System.out.println("  3. Payment Links");
+        System.out.println("  4. Recipients");
+        System.out.println("  5. Bank Accounts");
+        System.out.println("  6. Transfers");
+        System.out.println("  7. Company");
+        System.out.println("  8. Balance");
+        System.out.println("  0. Exit");
         System.out.print("\nChoice: ");
     }
 }

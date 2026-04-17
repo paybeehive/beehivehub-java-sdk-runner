@@ -22,7 +22,7 @@ public class PaymentLinksMenu {
     }
 
     public void run() {
-        System.out.println("🔗 Payment Links");
+        System.out.println("Payment Links");
         System.out.println("  1. List payment links");
         System.out.println("  2. Get payment link by ID");
         System.out.println("  3. Create payment link");

@@ -1,8 +1,23 @@
 {
+  "title": "Link de Pagamento Exemplo",
   "amount": 10000,
-  "payment_methods": ["pix", "credit_card"],
-  "expires_at": "2026-12-31T23:59:59Z",
-  "collect_address": false,
-  "collect_document": true,
-  "max_installments": 12
+  "settings": {
+    "defaultPaymentMethod": "credit_card",
+    "requestAddress": false,
+    "requestPhone": true,
+    "traceable": true,
+    "boleto": {
+      "enabled": true,
+      "expiresInDays": 1
+    },
+    "pix": {
+      "enabled": true,
+      "expiresInDays": 1
+    },
+    "card": {
+      "enabled": true,
+      "freeInstallments": 1,
+      "maxInstallments": 12
+    }
+  }
 }

@@ -19,3 +19,6 @@ Thumbs.db
 
 # Respostas salvas pelo runner
 output/
+
+# Claude code   
+.claude/

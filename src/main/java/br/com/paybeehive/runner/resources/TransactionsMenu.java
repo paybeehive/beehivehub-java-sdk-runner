@@ -23,7 +23,7 @@ public class TransactionsMenu {
     }
 
     public void run() {
-        System.out.println("💳 Transactions");
+        System.out.println("Transactions");
         System.out.println("  1. List transactions");
         System.out.println("  2. Get transaction by ID");
         System.out.println("  3. Create transaction");

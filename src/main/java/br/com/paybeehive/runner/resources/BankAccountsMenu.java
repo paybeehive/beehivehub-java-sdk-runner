@@ -21,7 +21,7 @@ public class BankAccountsMenu {
     }
 
     public void run() {
-        System.out.println("🏦 Bank Accounts");
+        System.out.println("Bank Accounts");
         System.out.println("  1. List bank accounts");
         System.out.println("  2. Create bank account");
         System.out.println("  0. Back");

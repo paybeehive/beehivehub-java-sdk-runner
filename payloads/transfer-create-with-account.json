@@ -1,5 +1,14 @@
 {
   "amount": 5000,
-  "recipient_id": 456,
-  "bank_account_id": 789
+  "recipientId": 456,
+  "bankAccount": {
+    "bankCode": "341",
+    "agencyNumber": "0001",
+    "accountNumber": "98765",
+    "accountDigit": "4",
+    "type": "conta_corrente",
+    "legalName": "Empresa Exemplo Ltda",
+    "documentType": "cnpj",
+    "documentNumber": "11222333000181"
+  }
 }

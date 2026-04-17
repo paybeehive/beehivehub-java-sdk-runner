@@ -1,9 +1,12 @@
 {
-  "invoice_descriptor": "MINHA EMPRESA",
-  "average_revenue": 1000000,
-  "average_ticket": 10000,
-  "product_info": "Produtos digitais e físicos",
-  "website": "https://exemplo.com.br",
-  "email": "contato@exemplo.com.br",
-  "phone": "+5511999999999"
+  "invoiceDescriptor": "Beehive Hub",
+  "details": {
+    "averageRevenue": 10000.0,
+    "averageTicket": 100.50,
+    "physicalProducts": true,
+    "productsDescription": "Produtos físicos",
+    "siteUrl": "https://www.meusite.com.br",
+    "phone": "11999999999",
+    "email": "contato@meusite.com.br"
+  }
 }

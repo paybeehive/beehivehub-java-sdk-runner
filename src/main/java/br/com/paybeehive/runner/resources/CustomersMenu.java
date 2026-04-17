@@ -21,7 +21,7 @@ public class CustomersMenu {
     }
 
     public void run() {
-        System.out.println("👥 Customers");
+        System.out.println("Customers");
         System.out.println("  1. List customers by email");
         System.out.println("  2. Get customer by ID");
         System.out.println("  3. Create customer");

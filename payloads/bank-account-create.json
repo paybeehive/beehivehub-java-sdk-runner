@@ -1,10 +1,10 @@
 {
-  "bank_code": "341",
-  "agency": "0001",
-  "account": "98765-4",
-  "type": "checking",
-  "document": {
-    "type": "cnpj",
-    "number": "11222333000181"
-  }
+  "bankCode": "341",
+  "agencyNumber": "0001",
+  "accountNumber": "98765",
+  "accountDigit": "4",
+  "type": "conta_corrente",
+  "legalName": "Empresa Exemplo Ltda",
+  "documentType": "cnpj",
+  "documentNumber": "11222333000181"
 }

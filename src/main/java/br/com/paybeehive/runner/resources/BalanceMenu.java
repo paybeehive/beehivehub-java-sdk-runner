@@ -19,7 +19,7 @@ public class BalanceMenu {
     }
 
     public void run() {
-        System.out.println("📊 Balance");
+        System.out.println("Balance");
         System.out.println("  1. Get available balance");
         System.out.println("  0. Back");
         System.out.print("\nChoice: ");

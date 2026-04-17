@@ -1,7 +1,23 @@
 {
+  "title": "Link de Pagamento Atualizado",
   "amount": 15000,
-  "payment_methods": ["pix"],
-  "collect_address": true,
-  "collect_document": true,
-  "max_installments": 1
+  "settings": {
+    "defaultPaymentMethod": "pix",
+    "requestAddress": true,
+    "requestPhone": true,
+    "traceable": true,
+    "boleto": {
+      "enabled": false,
+      "expiresInDays": 0
+    },
+    "pix": {
+      "enabled": true,
+      "expiresInDays": 1
+    },
+    "card": {
+      "enabled": false,
+      "freeInstallments": 1,
+      "maxInstallments": 12
+    }
+  }
 }

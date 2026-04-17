@@ -22,7 +22,7 @@ public class RecipientsMenu {
     }
 
     public void run() {
-        System.out.println("🎯 Recipients");
+        System.out.println("Recipients");
         System.out.println("  1. List recipients");
         System.out.println("  2. Get recipient by ID");
         System.out.println("  3. Create recipient");

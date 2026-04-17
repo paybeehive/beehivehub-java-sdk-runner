@@ -68,34 +68,34 @@ public class Utils {
     }
 
     public static void printSuccess(String message) {
-        System.out.println("\n✅ " + message);
+        System.out.println("\n[OK] " + message);
     }
 
     public static void printError(String message) {
-        System.err.println("\n❌ " + message);
+        System.err.println("\n[ERR] " + message);
     }
 
     public static void printResult(Object data) {
         if (data instanceof List<?> list) {
-            System.out.println("\n📊 Array with " + list.size() + " items");
+            System.out.println("\nArray with " + list.size() + " items");
             if (!list.isEmpty() && list.get(0) instanceof Map<?, ?> first) {
                 Object id = first.get("id");
                 System.out.println("   First item ID: " + (id != null ? id : "N/A"));
             }
         } else if (data instanceof Map<?, ?> map) {
-            System.out.println("\n📊 Object with " + map.size() + " properties");
+            System.out.println("\nObject with " + map.size() + " properties");
             if (map.containsKey("id")) {
                 System.out.println("   ID: " + map.get("id"));
             }
         } else {
-            System.out.println("\n📊 Result: " + data);
+            System.out.println("\nResult: " + data);
         }
     }
 
     public static void printResultWithFile(String operation, Object data, SdkInfo sdkInfo) {
         String filename = saveOutput(operation, data, sdkInfo);
         if (!filename.isEmpty()) {
-            System.out.println("📁 Full result saved to: output/" + filename);
+            System.out.println("Saved to: output/" + filename);
         }
     }
 }
