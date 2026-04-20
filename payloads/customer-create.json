@@ -1,0 +1,19 @@
+{
+  "name": "Maria Silva",
+  "email": "maria3@example.com",
+  "phone": "11988888888",
+  "address": {
+    "street": "Av. Paulista",
+    "streetNumber": "1578",
+    "complement": "Apto 101",
+    "neighborhood": "Bela Vista",
+    "zipCode": "01310100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "country": "br"
+  },
+  "document": {
+    "number": "98765432100",
+    "type": "cpf"
+  }
+}

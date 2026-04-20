@@ -1,0 +1,22 @@
+{
+  "legalName": "Recebedor Exemplo Ltda",
+  "document": {
+    "type": "cnpj",
+    "number": "11222333000181"
+  },
+  "transferSettings": {
+    "transferEnabled": true,
+    "automaticAnticipationEnabled": false,
+    "anticipatableVolumePercentage": 100
+  },
+  "bankAccount": {
+    "bankCode": "341",
+    "agencyNumber": "0001",
+    "accountNumber": "12345",
+    "accountDigit": "6",
+    "type": "conta_corrente",
+    "legalName": "Recebedor Exemplo Ltda",
+    "documentNumber": "11222333000181",
+    "documentType": "cnpj"
+  }
+}

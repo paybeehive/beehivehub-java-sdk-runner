@@ -1,0 +1,23 @@
+{
+  "title": "Link de Pagamento Exemplo",
+  "amount": 10000,
+  "settings": {
+    "defaultPaymentMethod": "credit_card",
+    "requestAddress": false,
+    "requestPhone": true,
+    "traceable": true,
+    "boleto": {
+      "enabled": true,
+      "expiresInDays": 1
+    },
+    "pix": {
+      "enabled": true,
+      "expiresInDays": 1
+    },
+    "card": {
+      "enabled": true,
+      "freeInstallments": 1,
+      "maxInstallments": 12
+    }
+  }
+}
